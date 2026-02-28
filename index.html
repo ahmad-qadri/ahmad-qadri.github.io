@@ -16,7 +16,8 @@
 
     <!-- Tailwind Configuration untuk Tema Korporat -->
     <script>
-        tailwind.config = {
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
@@ -93,11 +94,12 @@
 </head>
 <body id="main-body" class="overflow-hidden">
 
-    <!-- Audio Sesuai Data Original -->
-    <audio id="bg-music" loop>
+    <!-- OPTIMASI: preload="none" agar audio tidak membebani loading awal -->
+    <audio id="bg-music" loop preload="none">
         <source src="https://ia800205.us.archive.org/12/items/gas-gas-dari-reff-sampe-ending/GAS%20GAS%20DARI%20REFF%20SAMPE%20ENDING.MP3" type="audio/mpeg">
     </audio>
-    <audio id="audio-voice" preload="auto">
+    <!-- OPTIMASI: preload="metadata" cukup untuk mendapatkan durasi tanpa mendownload full -->
+    <audio id="audio-voice" preload="metadata">
         <source src="https://ia903208.us.archive.org/13/items/selamat-datang-di-website-personal-saya-achmad-qad-tts-14590-62/selamat%20datang%20di%20website%20personal%20saya%20Achmad%20Qad_TTS_14590_62.wav">
     </audio>
 
@@ -105,6 +107,11 @@
     <div id="loader">
         <div class="spinner"></div>
     </div>
+
+    <!-- Floating Music Control Button -->
+    <button id="musicToggleBtn" class="fixed bottom-6 right-6 z-[100] bg-corporate-accent text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:bg-blue-700 hover:scale-105 transition-all duration-300 hidden">
+        <i id="musicIcon" class="fas fa-volume-up text-xl"></i>
+    </button>
 
     <!-- ========================================== -->
     <!-- VIEW 1: KARTU NAMA DIGITAL / BIO PERSONAL  -->
@@ -114,7 +121,7 @@
         <div class="w-full max-w-lg bg-white rounded-2xl elegant-shadow overflow-hidden relative mt-8 mb-8">
             <!-- Header Aksen -->
             <div class="h-32 bg-gradient-to-r from-corporate-primary to-corporate-accent relative">
-                <!-- Ticker Teks Original (Dibuat rapi di atas) -->
+                <!-- Ticker Teks Original -->
                 <div class="absolute top-0 w-full bg-black/20 py-2 px-4 text-center">
                     <p class="text-white text-xs font-medium tracking-wide">
                         Assalamualaikum wr. wb • Selamat Datang di Website Personal Saya • Mari Berkolaborasi & Bersinergi
@@ -137,9 +144,9 @@
                         Semoga bisa memberi manfaat. Silakan jelajahi profil perusahaan kami, PT. Garuda Mas Anugerah (GMA), untuk menemukan solusi kesehatan dan peluang penghasilan nyata.
                     </p>
                     
-                    <!-- Tombol Masuk Original Text -->
-                    <button id="btnDetail" class="w-full bg-corporate-primary text-white font-semibold py-3.5 px-6 rounded-lg hover:bg-corporate-dark smooth-transition flex justify-center items-center gap-2 shadow-md">
-                        Lebih Detail Nya Klik Disini 👉
+                    <!-- Tombol Masuk Dioptimasi -->
+                    <button id="btnDetail" class="w-full bg-corporate-primary text-white font-semibold py-3.5 px-6 rounded-lg hover:bg-corporate-dark smooth-transition flex justify-center items-center gap-2 shadow-md flex-col sm:flex-row">
+                        <span>Lebih Detail Nya Klik Disini 👉</span>
                     </button>
                 </div>
                 
@@ -181,7 +188,7 @@
             </div>
         </nav>
 
-        <!-- Banner Fokus Original -->
+        <!-- Banner Fokus -->
         <div class="bg-corporate-dark pt-24 pb-3 px-4 text-center">
             <p class="text-slate-300 text-sm md:text-base max-w-4xl mx-auto font-medium">
                 Fokus: Pemasaran afiliasi (affiliate marketing) untuk produk-produknya, yang juga mencakup produk perawatan diri/skincare dan produk lain yang dijual melalui sistem stockist.
@@ -210,8 +217,8 @@
                         </div>
                     </div>
                     <div class="relative rounded-2xl overflow-hidden elegant-shadow">
-                        <!-- Gambar Banner Original -->
-                        <img src="https://bioqu.id/uploads/galleries/2279716/dea622a42a9bf32c9355605958f00cac.jpg" alt="MegaPro Banner" class="w-full h-auto object-cover">
+                        <!-- OPTIMASI: loading="lazy" -->
+                        <img src="https://bioqu.id/uploads/galleries/2279716/dea622a42a9bf32c9355605958f00cac.jpg" alt="MegaPro Banner" loading="lazy" class="w-full h-auto object-cover">
                     </div>
                 </div>
             </div>
@@ -225,7 +232,8 @@
                     <!-- PT GMA -->
                     <div>
                         <div class="mb-8">
-                            <img src="https://bioqu.id/uploads/galleries/2279716/168c21cc292c8c3255eb0683c1f1866f.png" alt="PT GMA" class="w-48 mb-6">
+                            <!-- OPTIMASI: loading="lazy" -->
+                            <img src="https://bioqu.id/uploads/galleries/2279716/168c21cc292c8c3255eb0683c1f1866f.png" alt="PT GMA" loading="lazy" class="w-48 mb-6">
                             <h2 class="text-3xl font-bold text-corporate-dark mb-4">PT. Garuda Mas Anugerah (GMA)</h2>
                         </div>
                         <div class="prose text-slate-600">
@@ -234,7 +242,8 @@
                         </div>
                         <div class="mt-8">
                             <a href="https://play.google.com/store/apps/details?id=io.gma.megapro" target="_blank" class="inline-block transition hover:opacity-80">
-                                <img src="https://bioqu.id/uploads/galleries/2279716/751f5383085daee07e260c5c2a8d5933.png" alt="Google Play" class="h-14">
+                                <!-- OPTIMASI: loading="lazy" -->
+                                <img src="https://bioqu.id/uploads/galleries/2279716/751f5383085daee07e260c5c2a8d5933.png" alt="Google Play" loading="lazy" class="h-14">
                             </a>
                         </div>
                     </div>
@@ -283,7 +292,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-                    <!-- Cards Data Original -->
                     <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
                         <h4 class="text-lg font-bold text-corporate-dark mb-2">✔️ Produk Kesehatan Berkualitas</h4>
                         <p class="text-slate-600 text-sm">Mendukung stamina, kebugaran, dan gaya hidup sehat.</p>
@@ -306,21 +314,22 @@
                     </div>
                 </div>
 
-                <!-- Foto Produk Original -->
+                <!-- Foto Produk -->
                 <div class="bg-corporate-dark rounded-2xl p-8 md:p-12 text-center">
                     <h3 class="text-2xl font-bold text-white mb-8">
                         Misi Reward gampang, proses cepat, Reward langsung bisa kamu klaim. Jangan sampai kelewatan ya..!
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <img src="https://bioqu.id/uploads/galleries/2279716/a88b1e38d715b47de7506fa6371081d1.jpg" class="rounded-xl w-full object-cover" alt="Produk">
-                        <img src="https://bioqu.id/uploads/galleries/2279716/b71ee4ef1a5eb2ebdbd483ccebb2ec07.png" class="rounded-xl w-full object-cover" alt="Produk">
-                        <img src="https://bioqu.id/uploads/galleries/2279716/d16e5871a44b74b82a9ccc349dcd7ab5.jpg" class="rounded-xl w-full object-cover" alt="Produk">
+                        <!-- OPTIMASI: loading="lazy" -->
+                        <img src="https://bioqu.id/uploads/galleries/2279716/a88b1e38d715b47de7506fa6371081d1.jpg" loading="lazy" class="rounded-xl w-full object-cover" alt="Produk">
+                        <img src="https://bioqu.id/uploads/galleries/2279716/b71ee4ef1a5eb2ebdbd483ccebb2ec07.png" loading="lazy" class="rounded-xl w-full object-cover" alt="Produk">
+                        <img src="https://bioqu.id/uploads/galleries/2279716/d16e5871a44b74b82a9ccc349dcd7ab5.jpg" loading="lazy" class="rounded-xl w-full object-cover" alt="Produk">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Testimoni / Video Original -->
+        <!-- Testimoni / Video -->
         <section id="testimoni" class="py-20 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
@@ -334,57 +343,58 @@
                 </div>
 
                 <!-- Grid Video Lengkap -->
+                <!-- OPTIMASI: Menambahkan atribut preload="none" ke semua tag <video> agar tidak membebani loading awal -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 video-wrapper">
                     <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                        <video controls playsinline preload="none" class="w-full h-48 object-cover bg-black rounded-lg">
                             <source src="https://ia601204.us.archive.org/33/items/vid-20260106-wa-0059_20260107_1406/VID-20260106-WA0059.mp4" type="video/mp4">
                         </video>
                         <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Video Testimoni</h4>
                     </div>
                     <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                        <video controls playsinline preload="none" class="w-full h-48 object-cover bg-black rounded-lg">
                             <source src="https://ia800909.us.archive.org/27/items/vid-20260106-wa-0037_202601/VID-20260106-WA0037.mp4" type="video/mp4">
                         </video>
                         <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Video Produk Landing</h4>
                     </div>
                     <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                        <video controls playsinline preload="none" class="w-full h-48 object-cover bg-black rounded-lg">
                             <source src="https://ia600405.us.archive.org/32/items/vid-20260106-wa-0041/VID-20260106-WA0041.mp4" type="video/mp4">
                         </video>
                         <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Kaki Bengkak dan Tumor Sembuh</h4>
                     </div>
                     <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                        <video controls playsinline preload="none" class="w-full h-48 object-cover bg-black rounded-lg">
                             <source src="https://ia902909.us.archive.org/2/items/vid-20260105-wa-0022/VID-20260105-WA0022.mp4" type="video/mp4">
                         </video>
                         <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Kanker Payudara Sembuh</h4>
                     </div>
                     <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                        <video controls playsinline preload="none" class="w-full h-48 object-cover bg-black rounded-lg">
                             <source src="https://ia803104.us.archive.org/14/items/vid-20260106-wa-0040/VID-20260106-WA0040.mp4" type="video/mp4">
                         </video>
                         <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Testimoni Ahli Matematika</h4>
                     </div>
                     <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                        <video controls playsinline preload="none" class="w-full h-48 object-cover bg-black rounded-lg">
                             <source src="https://ia600403.us.archive.org/23/items/vid-20260106-wa-0038/VID-20260106-WA0038.mp4" type="video/mp4">
                         </video>
                         <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">1,5 Bulan Dapat 40 Juta + Tour Bali</h4>
                     </div>
                     <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                        <video controls playsinline preload="none" class="w-full h-48 object-cover bg-black rounded-lg">
                             <source src="https://ia801702.us.archive.org/1/items/vid-20260106-wa-0033/VID-20260106-WA0033.mp4" type="video/mp4">
                         </video>
                         <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Dapat 200 Juta Dalam 2 Bulan</h4>
                     </div>
                     <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                        <video controls playsinline preload="none" class="w-full h-48 object-cover bg-black rounded-lg">
                             <source src="https://ia902909.us.archive.org/17/items/vid-20260106-wa-0034-1/VID-20260106-WA0034_1.mp4" type="video/mp4">
                         </video>
                         <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Awalnya Diremehkan Kini Puluhan Juta</h4>
                     </div>
                     <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                        <video controls playsinline preload="none" class="w-full h-48 object-cover bg-black rounded-lg">
                             <source src="https://ia803104.us.archive.org/4/items/vid-20260105-wa-0019/VID-20260105-WA0019.mp4" type="video/mp4">
                         </video>
                         <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Reward Tour Ke Bali</h4>
@@ -432,20 +442,19 @@
                     </div>
                 </div>
 
-                <!-- Call To Action (Tombol Asli) -->
+                <!-- Call To Action -->
                 <div class="mt-24 text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl font-bold text-corporate-dark mb-4">Saatnya Ambil Keputusan Hari Ini</h2>
                     <p class="text-slate-600 mb-2">Kesempatan tidak datang dua kali.</p>
                     <p class="text-slate-600 mb-10">Mulai langkah kecil hari ini untuk perubahan besar ke depan.</p>
                     
                     <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                        <!-- GIF Register Asli dalam Wadah Rapi -->
+                        <!-- OPTIMASI: loading="lazy" -->
                         <a href="https://affiliate.garudaqu.com/register/AF54699283" target="_blank" class="block w-64 hover:-translate-y-1 transition bg-white p-2 rounded-xl border border-slate-100 elegant-shadow">
-                            <img src="https://bioqu.id/uploads/galleries/2279716/ab8180bda9e932068f7819c930868322.gif" alt="Daftar Member" class="w-full rounded-lg">
+                            <img src="https://bioqu.id/uploads/galleries/2279716/ab8180bda9e932068f7819c930868322.gif" loading="lazy" alt="Daftar Member" class="w-full rounded-lg">
                         </a>
-                        <!-- GIF WA Asli dalam Wadah Rapi -->
                         <a href="https://wa.me/6281260139567?text=Assalamualaikum%20saya%20ingin%20Daftar%20Menjadi%20Member%20MegaPro" target="_blank" class="block w-64 hover:-translate-y-1 transition bg-white p-2 rounded-xl border border-slate-100 elegant-shadow">
-                            <img src="https://bioqu.id/uploads/galleries/2279716/8bf9c98d0ca38f824ddb8985833a972d.gif" alt="Hubungi Kami" class="w-full rounded-lg">
+                            <img src="https://bioqu.id/uploads/galleries/2279716/8bf9c98d0ca38f824ddb8985833a972d.gif" loading="lazy" alt="Hubungi Kami" class="w-full rounded-lg">
                         </a>
                     </div>
                 </div>
@@ -501,13 +510,13 @@
         document.getElementById('year-bio').textContent = new Date().getFullYear();
         document.getElementById('year-compro').textContent = new Date().getFullYear();
 
-        /* Menghilangkan Loader saat halaman siap */
+        /* Menghilangkan Loader saat halaman siap (Lebih cepat karena beban aset direduksi) */
         window.addEventListener('load', () => {
             const loader = document.getElementById("loader");
             setTimeout(() => {
                 loader.style.opacity = '0';
                 setTimeout(() => loader.remove(), 500);
-            }, 600);
+            }, 300);
         });
 
         /* ===== LOGIKA TOMBOL & AUDIO ===== */
@@ -519,8 +528,58 @@
         const comproView = document.getElementById("company-profile");
         const bodyEl = document.getElementById("main-body");
 
+        // UI Tambahan: Music Toggle Button
+        const musicToggleBtn = document.getElementById("musicToggleBtn");
+        const musicIcon = document.getElementById("musicIcon");
+
+        // State Audio Intro
+        let isPlayingIntro = false;
+
+        // Fungsi Update Ikon Musik
+        function updateMusicIcon() {
+            if (bgMusic.paused) {
+                musicIcon.classList.remove('fa-volume-up');
+                musicIcon.classList.add('fa-volume-mute');
+            } else {
+                musicIcon.classList.remove('fa-volume-mute');
+                musicIcon.classList.add('fa-volume-up');
+            }
+        }
+
+        // Event Listener untuk Tombol Toggle Musik
+        musicToggleBtn.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play().then(() => updateMusicIcon());
+            } else {
+                bgMusic.pause();
+                updateMusicIcon();
+            }
+        });
+
+        // Event Listener untuk Video: Auto Pause Musik Latar saat video diputar
+        const allVideos = document.querySelectorAll('video');
+        allVideos.forEach(video => {
+            video.addEventListener('play', () => {
+                // Jeda musik latar
+                if (!bgMusic.paused) {
+                    bgMusic.pause();
+                    updateMusicIcon();
+                }
+                
+                // Jeda video lain yang sedang jalan agar tidak menumpuk suaranya
+                allVideos.forEach(v => {
+                    if (v !== video && !v.paused) {
+                        v.pause();
+                    }
+                });
+            });
+        });
+
         // Transisi ke Company Profile
         function masukCompanyProfile() {
+            // Reset status intro
+            isPlayingIntro = false;
+            
             // Sembunyikan Bio
             view1.classList.remove('active');
             
@@ -528,6 +587,9 @@
                 view1.style.display = "none";
                 comproView.classList.remove('hidden');
                 
+                // Tampilkan tombol musik floating
+                musicToggleBtn.classList.remove('hidden');
+
                 // Izinkan scroll
                 bodyEl.classList.remove('overflow-hidden');
 
@@ -538,7 +600,12 @@
 
                 // Mulai musik background
                 bgMusic.volume = 0.15; 
-                bgMusic.play().catch(e => console.log("Musik dipause oleh browser"));
+                bgMusic.play().then(() => {
+                    updateMusicIcon();
+                }).catch(e => {
+                    console.log("Musik dipause oleh browser");
+                    updateMusicIcon();
+                });
                 
                 window.scrollTo(0,0);
             }, 600);
@@ -546,20 +613,31 @@
 
         // Ketika tombol di BIO diklik
         btnDetail.addEventListener("click", async () => {
-            // Ubah teks tombol untuk indikator loading
-            btnDetail.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memuat Data...';
             
+            // FITUR LEWATI: Jika user klik lagi saat intro sedang menyala, langsung skip ke halaman profil
+            if (isPlayingIntro) {
+                audioVoice.pause();
+                masukCompanyProfile();
+                return;
+            }
+
+            // OPTIMASI UX: Ubah UI tombol agar user tahu ada suara sedang diputar (Bukan mengira web lelet)
+            btnDetail.innerHTML = '<span class="flex items-center gap-2 text-sm md:text-base"><i class="fas fa-volume-up animate-pulse text-xl"></i> Memutar Pesan Suara... (Klik lagi untuk lewati)</span>';
+            btnDetail.classList.replace('bg-corporate-primary', 'bg-corporate-accent');
+            
+            isPlayingIntro = true;
+
             try {
                 // Putar pesan suara Achmad Qadri
                 audioVoice.currentTime = 0;
                 await audioVoice.play();
                 
-                // Ketika pesan suara selesai, buka compro
+                // Ketika pesan suara selesai, otomatis buka compro
                 audioVoice.onended = () => {
                     masukCompanyProfile();
                 };
             } catch (e) {
-                // Jika browser memblokir audio, langsung masuk saja
+                // Jika browser memblokir audio (Auto-play policy), langsung masuk saja
                 masukCompanyProfile();
             }
         });
@@ -571,14 +649,23 @@
             setTimeout(() => {
                 comproView.classList.add('hidden');
                 
-                // Kembalikan teks tombol
-                btnDetail.innerHTML = 'Lebih Detail Nya Klik Disini 👉';
+                // Sembunyikan tombol musik
+                musicToggleBtn.classList.add('hidden');
+
+                // Kembalikan teks dan warna tombol ke original
+                btnDetail.innerHTML = '<span>Lebih Detail Nya Klik Disini 👉</span>';
+                if (btnDetail.classList.contains('bg-corporate-accent')) {
+                    btnDetail.classList.replace('bg-corporate-accent', 'bg-corporate-primary');
+                }
                 
                 view1.style.display = "flex";
                 bodyEl.classList.add('overflow-hidden');
                 
-                // Pause musik
+                // Pause musik, intro, dan semua video yang mungkin masih menyala
                 bgMusic.pause();
+                audioVoice.pause();
+                updateMusicIcon();
+                allVideos.forEach(v => v.pause());
                 
                 setTimeout(() => {
                     view1.classList.add('active');
