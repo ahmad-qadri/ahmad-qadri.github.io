@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achmad Qadri. SE - LIFESTYLE DAN BISNIS</title>
+    
+    <!-- Google Fonts: Inter untuk kesan bersih dan profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration untuk Tema Korporat -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        corporate: {
+                            dark: '#0f172a',    // Slate 900
+                            primary: '#1e293b', // Slate 800
+                            light: '#f8fafc',   // Slate 50
+                            accent: '#0284c7',  // Light Blue 600
+                            gold: '#b48600'     // Elegant Gold
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+        }
+
+        /* Transisi Halus */
+        .smooth-transition {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Tampilan Fade untuk Pindah Halaman */
+        .fade-screen {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s;
+        }
+        .fade-screen.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Bayangan Elegan untuk Card */
+        .elegant-shadow {
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+        }
+
+        /* Loader Eksekutif */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.5s;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Video Container */
+        .video-wrapper video {
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body id="main-body" class="overflow-hidden">
+
+    <!-- Audio Sesuai Data Original -->
+    <audio id="bg-music" loop>
+        <source src="https://ia800205.us.archive.org/12/items/gas-gas-dari-reff-sampe-ending/GAS%20GAS%20DARI%20REFF%20SAMPE%20ENDING.MP3" type="audio/mpeg">
+    </audio>
+    <audio id="audio-voice" preload="auto">
+        <source src="https://ia903208.us.archive.org/13/items/selamat-datang-di-website-personal-saya-achmad-qad-tts-14590-62/selamat%20datang%20di%20website%20personal%20saya%20Achmad%20Qad_TTS_14590_62.wav">
+    </audio>
+
+    <!-- Loader -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: KARTU NAMA DIGITAL / BIO PERSONAL  -->
+    <!-- ========================================== -->
+    <div id="view-1" class="fade-screen active fixed inset-0 bg-corporate-dark flex flex-col items-center justify-center p-4 z-50 overflow-y-auto">
+        
+        <div class="w-full max-w-lg bg-white rounded-2xl elegant-shadow overflow-hidden relative mt-8 mb-8">
+            <!-- Header Aksen -->
+            <div class="h-32 bg-gradient-to-r from-corporate-primary to-corporate-accent relative">
+                <!-- Ticker Teks Original (Dibuat rapi di atas) -->
+                <div class="absolute top-0 w-full bg-black/20 py-2 px-4 text-center">
+                    <p class="text-white text-xs font-medium tracking-wide">
+                        Assalamualaikum wr. wb • Selamat Datang di Website Personal Saya • Mari Berkolaborasi & Bersinergi
+                    </p>
+                </div>
+            </div>
+
+            <!-- Konten Profil -->
+            <div class="px-8 pb-8 pt-0 text-center relative">
+                <!-- Foto Asli -->
+                <img src="https://ia600403.us.archive.org/30/items/img-20260226-161211/IMG_20260226_161211.png" 
+                     alt="Achmad Qadri" 
+                     class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg mx-auto -mt-14 mb-4 relative z-10 bg-white">
+                
+                <h1 class="text-2xl font-bold text-corporate-dark">Achmad Qadri, S.E.</h1>
+                <p class="text-corporate-accent font-semibold text-sm mb-6 uppercase tracking-wider">Lifestyle dan Bisnis</p>
+
+                <div class="bg-slate-50 rounded-xl p-5 mb-8 border border-slate-100">
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Semoga bisa memberi manfaat. Silakan jelajahi profil perusahaan kami, PT. Garuda Mas Anugerah (GMA), untuk menemukan solusi kesehatan dan peluang penghasilan nyata.
+                    </p>
+                    
+                    <!-- Tombol Masuk Original Text -->
+                    <button id="btnDetail" class="w-full bg-corporate-primary text-white font-semibold py-3.5 px-6 rounded-lg hover:bg-corporate-dark smooth-transition flex justify-center items-center gap-2 shadow-md">
+                        Lebih Detail Nya Klik Disini 👉
+                    </button>
+                </div>
+                
+                <p class="text-xs text-slate-400">© <span id="year-bio"></span> Megapro Lifestyle dan Bisnis</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: COMPANY PROFILE LENGKAP            -->
+    <!-- ========================================== -->
+    <div id="company-profile" class="fade-screen hidden relative">
+        
+        <!-- Navbar Profesional -->
+        <nav class="bg-white/90 backdrop-blur-md fixed w-full z-40 border-b border-slate-200 shadow-sm transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-20">
+                    <div class="flex items-center gap-4">
+                        <button onclick="kembaliKeBio()" class="text-slate-500 hover:text-corporate-accent transition" title="Kembali ke Profil">
+                            <i class="fas fa-arrow-left text-lg"></i>
+                        </button>
+                        <div class="font-bold text-xl tracking-tight text-corporate-dark">
+                            GMA <span class="text-corporate-accent">MEGAPRO</span>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#tentang" class="text-sm font-medium text-slate-600 hover:text-corporate-accent transition">Tentang Kami</a>
+                        <a href="#info" class="text-sm font-medium text-slate-600 hover:text-corporate-accent transition">Peluang</a>
+                        <a href="#testimoni" class="text-sm font-medium text-slate-600 hover:text-corporate-accent transition">Testimoni</a>
+                        <a href="#gabung" class="text-sm font-medium text-slate-600 hover:text-corporate-accent transition">Cara Bergabung</a>
+                    </div>
+                    <div class="hidden md:block">
+                        <a href="https://wa.me/6281260139567" target="_blank" class="px-6 py-2.5 bg-corporate-accent text-white font-medium rounded-md hover:bg-blue-700 smooth-transition text-sm shadow-sm">
+                            Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Banner Fokus Original -->
+        <div class="bg-corporate-dark pt-24 pb-3 px-4 text-center">
+            <p class="text-slate-300 text-sm md:text-base max-w-4xl mx-auto font-medium">
+                Fokus: Pemasaran afiliasi (affiliate marketing) untuk produk-produknya, yang juga mencakup produk perawatan diri/skincare dan produk lain yang dijual melalui sistem stockist.
+            </p>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="bg-white py-16 md:py-24 border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-corporate-accent text-xs font-semibold tracking-wider mb-6">
+                            LIFESTYLE DAN BISNIS
+                        </span>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-corporate-dark leading-tight mb-6">
+                            Solusi Kesehatan + <br>
+                            <span class="text-corporate-accent">Peluang Penghasilan Nyata</span>
+                        </h1>
+                        <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                            Sehat Sekaligus Berpenghasilan Bersama MegaPro. Program kesehatan berkualitas PLUS peluang bisnis dengan sistem reward menarik & komunitas yang solid.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#gabung" class="px-8 py-3.5 bg-corporate-primary text-white font-medium rounded-md hover:bg-corporate-dark smooth-transition shadow-lg">
+                                Mulai Sekarang
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden elegant-shadow">
+                        <!-- Gambar Banner Original -->
+                        <img src="https://bioqu.id/uploads/galleries/2279716/dea622a42a9bf32c9355605958f00cac.jpg" alt="MegaPro Banner" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Tentang Perusahaan & Apa itu MegaPro -->
+        <section id="tentang" class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    
+                    <!-- PT GMA -->
+                    <div>
+                        <div class="mb-8">
+                            <img src="https://bioqu.id/uploads/galleries/2279716/168c21cc292c8c3255eb0683c1f1866f.png" alt="PT GMA" class="w-48 mb-6">
+                            <h2 class="text-3xl font-bold text-corporate-dark mb-4">PT. Garuda Mas Anugerah (GMA)</h2>
+                        </div>
+                        <div class="prose text-slate-600">
+                            <p>Adalah perusahaan yang bergerak di bidang pemasaran dan distribusi produk, khususnya melalui skema <strong>affiliate marketing</strong> dan menawarkan program kesejahteraan bagi mitranya.</p>
+                            <p>Dengan peluncuran aplikasi <strong>"GMA Affiliate Mega Pro"</strong> untuk memperluas jangkauan bisnisnya, serta sering mengadakan acara dan promosi untuk mitra dan konsumennya.</p>
+                        </div>
+                        <div class="mt-8">
+                            <a href="https://play.google.com/store/apps/details?id=io.gma.megapro" target="_blank" class="inline-block transition hover:opacity-80">
+                                <img src="https://bioqu.id/uploads/galleries/2279716/751f5383085daee07e260c5c2a8d5933.png" alt="Google Play" class="h-14">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Apa Itu MegaPro -->
+                    <div id="info" class="bg-white p-8 md:p-10 rounded-2xl elegant-shadow border border-slate-100">
+                        <h3 class="text-2xl font-bold text-corporate-dark mb-6 border-b border-slate-100 pb-4">Apa Itu MegaPro?</h3>
+                        <p class="text-slate-700 font-medium mb-6">MegaPro adalah program kesehatan dan peluang usaha yang memungkinkan Anda:</p>
+                        
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Menggunakan produk kesehatan berkualitas</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Membangun jaringan dengan sistem yang jelas</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Mendapatkan penghasilan tambahan</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span>Meraih reward & perjalanan eksklusif</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8 bg-blue-50 p-4 rounded-lg">
+                            <p class="text-corporate-accent font-semibold text-center text-sm">
+                                Cocok untuk pemula maupun profesional yang ingin hidup lebih sehat dan produktif.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Kenapa Bergabung & Program Reward -->
+        <section class="py-20 bg-white border-y border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-corporate-dark mb-4">Kenapa Banyak Orang Bergabung di MegaPro?</h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto">Kami memberikan sistem yang adil dan produk yang terbukti kualitasnya.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                    <!-- Cards Data Original -->
+                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                        <h4 class="text-lg font-bold text-corporate-dark mb-2">✔️ Produk Kesehatan Berkualitas</h4>
+                        <p class="text-slate-600 text-sm">Mendukung stamina, kebugaran, dan gaya hidup sehat.</p>
+                    </div>
+                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                        <h4 class="text-lg font-bold text-corporate-dark mb-2">✔️ Penghasilan Fleksibel</h4>
+                        <p class="text-slate-600 text-sm">Bisa dijalankan dari rumah, tanpa mengganggu aktivitas utama.</p>
+                    </div>
+                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                        <h4 class="text-lg font-bold text-corporate-dark mb-2">✔️ Sistem Jelas & Terbukti</h4>
+                        <p class="text-slate-600 text-sm">Tanpa ribet, dibimbing dari awal sampai paham.</p>
+                    </div>
+                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                        <h4 class="text-lg font-bold text-corporate-dark mb-2">✔️ Reward & Tour Menarik</h4>
+                        <p class="text-slate-600 text-sm">Kesempatan mendapatkan bonus & perjalanan eksklusif.</p>
+                    </div>
+                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                        <h4 class="text-lg font-bold text-corporate-dark mb-2">✔️ Komunitas Supportif</h4>
+                        <p class="text-slate-600 text-sm">Dibimbing mentor & tim yang siap membantu.</p>
+                    </div>
+                </div>
+
+                <!-- Foto Produk Original -->
+                <div class="bg-corporate-dark rounded-2xl p-8 md:p-12 text-center">
+                    <h3 class="text-2xl font-bold text-white mb-8">
+                        Misi Reward gampang, proses cepat, Reward langsung bisa kamu klaim. Jangan sampai kelewatan ya..!
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <img src="https://bioqu.id/uploads/galleries/2279716/a88b1e38d715b47de7506fa6371081d1.jpg" class="rounded-xl w-full object-cover" alt="Produk">
+                        <img src="https://bioqu.id/uploads/galleries/2279716/b71ee4ef1a5eb2ebdbd483ccebb2ec07.png" class="rounded-xl w-full object-cover" alt="Produk">
+                        <img src="https://bioqu.id/uploads/galleries/2279716/d16e5871a44b74b82a9ccc349dcd7ab5.jpg" class="rounded-xl w-full object-cover" alt="Produk">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimoni / Video Original -->
+        <section id="testimoni" class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-corporate-dark mb-6">Apa Kata Mereka yang Sudah Bergabung?</h2>
+                    <div class="bg-white inline-block p-6 rounded-xl border border-slate-200 text-left mb-6 shadow-sm">
+                        <p class="text-slate-700 font-medium mb-2">⭐ "Badan lebih fit, penghasilan juga jalan."</p>
+                        <p class="text-slate-700 font-medium mb-2">⭐ "Awalnya coba-coba, sekarang sudah rutin dapat bonus."</p>
+                        <p class="text-slate-700 font-medium">⭐ "Sistemnya jelas dan dibimbing sampai bisa."</p>
+                    </div>
+                    <p class="text-sm text-slate-500 italic">📌 Hasil setiap orang bisa berbeda, tergantung usaha & konsistensi.</p>
+                </div>
+
+                <!-- Grid Video Lengkap -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 video-wrapper">
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                            <source src="https://ia601204.us.archive.org/33/items/vid-20260106-wa-0059_20260107_1406/VID-20260106-WA0059.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Video Testimoni</h4>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                            <source src="https://ia800909.us.archive.org/27/items/vid-20260106-wa-0037_202601/VID-20260106-WA0037.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Video Produk Landing</h4>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                            <source src="https://ia600405.us.archive.org/32/items/vid-20260106-wa-0041/VID-20260106-WA0041.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Kaki Bengkak dan Tumor Sembuh</h4>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                            <source src="https://ia902909.us.archive.org/2/items/vid-20260105-wa-0022/VID-20260105-WA0022.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Kanker Payudara Sembuh</h4>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                            <source src="https://ia803104.us.archive.org/14/items/vid-20260106-wa-0040/VID-20260106-WA0040.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Testimoni Ahli Matematika</h4>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                            <source src="https://ia600403.us.archive.org/23/items/vid-20260106-wa-0038/VID-20260106-WA0038.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">1,5 Bulan Dapat 40 Juta + Tour Bali</h4>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                            <source src="https://ia801702.us.archive.org/1/items/vid-20260106-wa-0033/VID-20260106-WA0033.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Dapat 200 Juta Dalam 2 Bulan</h4>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                            <source src="https://ia902909.us.archive.org/17/items/vid-20260106-wa-0034-1/VID-20260106-WA0034_1.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Awalnya Diremehkan Kini Puluhan Juta</h4>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
+                        <video controls playsinline class="w-full h-48 object-cover bg-black rounded-lg">
+                            <source src="https://ia803104.us.archive.org/4/items/vid-20260105-wa-0019/VID-20260105-WA0019.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Reward Tour Ke Bali</h4>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="https://bioqu.id/KUMPULAN_TESTIMONI" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-corporate-primary text-white font-medium rounded-md hover:bg-corporate-dark transition shadow-md">
+                        <i class="fas fa-play"></i> Tonton Kumpulan Testimoni Lainnya
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagaimana Cara Bergabung -->
+        <section id="gabung" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                    
+                    <!-- Cara Bergabung -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-corporate-dark mb-6">Bagaimana Cara Bergabung di MegaPro?</h2>
+                        <ul class="space-y-5 text-slate-700">
+                            <li class="flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-blue-50 text-corporate-accent flex items-center justify-center font-bold text-sm shrink-0">1</span> Klik tombol Gabung Sekarang</li>
+                            <li class="flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-blue-50 text-corporate-accent flex items-center justify-center font-bold text-sm shrink-0">2</span> Konsultasi GRATIS via WhatsApp</li>
+                            <li class="flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-blue-50 text-corporate-accent flex items-center justify-center font-bold text-sm shrink-0">3</span> Pilih paket sesuai kebutuhan</li>
+                            <li class="flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-blue-50 text-corporate-accent flex items-center justify-center font-bold text-sm shrink-0">4</span> Mulai pakai produk & jalankan sistem</li>
+                            <li class="flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-blue-50 text-corporate-accent flex items-center justify-center font-bold text-sm shrink-0">5</span> Raih penghasilan & reward</li>
+                        </ul>
+                        <div class="mt-8 p-4 bg-slate-50 border-l-4 border-corporate-accent rounded-r-lg">
+                            <p class="font-bold text-corporate-dark">👉 MUDAH – CEPAT – DIBIMBING</p>
+                        </div>
+                    </div>
+
+                    <!-- Cocok Untuk Anda Jika -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-corporate-dark mb-6">Program Ini Cocok Untuk Anda Jika:</h2>
+                        <ul class="space-y-4 text-slate-700 bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Ingin hidup lebih sehat</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Ingin penghasilan tambahan</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Ingin bisnis tanpa ribet</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Ingin komunitas positif</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Ingin masa depan lebih baik</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Call To Action (Tombol Asli) -->
+                <div class="mt-24 text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold text-corporate-dark mb-4">Saatnya Ambil Keputusan Hari Ini</h2>
+                    <p class="text-slate-600 mb-2">Kesempatan tidak datang dua kali.</p>
+                    <p class="text-slate-600 mb-10">Mulai langkah kecil hari ini untuk perubahan besar ke depan.</p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                        <!-- GIF Register Asli dalam Wadah Rapi -->
+                        <a href="https://affiliate.garudaqu.com/register/AF54699283" target="_blank" class="block w-64 hover:-translate-y-1 transition bg-white p-2 rounded-xl border border-slate-100 elegant-shadow">
+                            <img src="https://bioqu.id/uploads/galleries/2279716/ab8180bda9e932068f7819c930868322.gif" alt="Daftar Member" class="w-full rounded-lg">
+                        </a>
+                        <!-- GIF WA Asli dalam Wadah Rapi -->
+                        <a href="https://wa.me/6281260139567?text=Assalamualaikum%20saya%20ingin%20Daftar%20Menjadi%20Member%20MegaPro" target="_blank" class="block w-64 hover:-translate-y-1 transition bg-white p-2 rounded-xl border border-slate-100 elegant-shadow">
+                            <img src="https://bioqu.id/uploads/galleries/2279716/8bf9c98d0ca38f824ddb8985833a972d.gif" alt="Hubungi Kami" class="w-full rounded-lg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-corporate-primary border-t border-slate-700 pt-16 pb-8 text-slate-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                    <div class="md:col-span-1">
+                        <h4 class="text-2xl font-bold text-white mb-4">GMA <span class="text-corporate-accent">MEGAPRO</span></h4>
+                        <p class="text-sm leading-relaxed mb-6">
+                            Membangun impian dan menjaga kesehatan menjadi prioritas untuk masa depan yang lebih baik.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="https://wa.me/6281260139567" target="_blank" class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center hover:bg-[#25D366] hover:text-white transition">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-white mb-4 uppercase tracking-wider text-sm">Tautan Berguna</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li><a href="#beranda" class="hover:text-white transition">Beranda</a></li>
+                            <li><a href="#tentang" class="hover:text-white transition">Tentang Kami</a></li>
+                            <li><a href="#testimoni" class="hover:text-white transition">Testimoni</a></li>
+                            <li><a href="https://bioqu.id/KUMPULAN_TESTIMONI" target="_blank" class="hover:text-white transition">Kumpulan Testimoni</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-white mb-4 uppercase tracking-wider text-sm">Kontak Kami</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-envelope text-corporate-accent"></i> info@garudaqu.com
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-phone text-corporate-accent"></i> +62 812-6013-9567
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-slate-700 pt-8 text-center text-sm">
+                    <p>&copy; <span id="year-compro"></span> PT. Garuda Mas Anugerah. Hak Cipta Dilindungi.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- SCRIPT LOGIKA -->
+    <script>
+        document.getElementById('year-bio').textContent = new Date().getFullYear();
+        document.getElementById('year-compro').textContent = new Date().getFullYear();
+
+        /* Menghilangkan Loader saat halaman siap */
+        window.addEventListener('load', () => {
+            const loader = document.getElementById("loader");
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.remove(), 500);
+            }, 600);
+        });
+
+        /* ===== LOGIKA TOMBOL & AUDIO ===== */
+        const btnDetail = document.getElementById("btnDetail");
+        const audioVoice = document.getElementById("audio-voice");
+        const bgMusic = document.getElementById("bg-music");
+        
+        const view1 = document.getElementById("view-1");
+        const comproView = document.getElementById("company-profile");
+        const bodyEl = document.getElementById("main-body");
+
+        // Transisi ke Company Profile
+        function masukCompanyProfile() {
+            // Sembunyikan Bio
+            view1.classList.remove('active');
+            
+            setTimeout(() => {
+                view1.style.display = "none";
+                comproView.classList.remove('hidden');
+                
+                // Izinkan scroll
+                bodyEl.classList.remove('overflow-hidden');
+
+                // Trigger Fade Masuk Compro
+                setTimeout(() => {
+                    comproView.classList.add('active');
+                }, 50);
+
+                // Mulai musik background
+                bgMusic.volume = 0.15; 
+                bgMusic.play().catch(e => console.log("Musik dipause oleh browser"));
+                
+                window.scrollTo(0,0);
+            }, 600);
+        }
+
+        // Ketika tombol di BIO diklik
+        btnDetail.addEventListener("click", async () => {
+            // Ubah teks tombol untuk indikator loading
+            btnDetail.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memuat Data...';
+            
+            try {
+                // Putar pesan suara Achmad Qadri
+                audioVoice.currentTime = 0;
+                await audioVoice.play();
+                
+                // Ketika pesan suara selesai, buka compro
+                audioVoice.onended = () => {
+                    masukCompanyProfile();
+                };
+            } catch (e) {
+                // Jika browser memblokir audio, langsung masuk saja
+                masukCompanyProfile();
+            }
+        });
+
+        // Kembali ke BIO
+        function kembaliKeBio() {
+            comproView.classList.remove('active');
+            
+            setTimeout(() => {
+                comproView.classList.add('hidden');
+                
+                // Kembalikan teks tombol
+                btnDetail.innerHTML = 'Lebih Detail Nya Klik Disini 👉';
+                
+                view1.style.display = "flex";
+                bodyEl.classList.add('overflow-hidden');
+                
+                // Pause musik
+                bgMusic.pause();
+                
+                setTimeout(() => {
+                    view1.classList.add('active');
+                }, 50);
+                
+                window.scrollTo(0,0);
+            }, 600);
+        }
+    </script>
+</body>
+</html>
