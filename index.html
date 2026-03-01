@@ -236,11 +236,22 @@
                             <img src="https://bioqu.id/uploads/galleries/2279716/168c21cc292c8c3255eb0683c1f1866f.png" alt="PT GMA" loading="lazy" class="w-48 mb-6">
                             <h2 class="text-3xl font-bold text-corporate-dark mb-4">PT. Garuda Mas Anugerah (GMA)</h2>
                         </div>
-                        <div class="prose text-slate-600">
+                        <div class="prose text-slate-600 mb-6">
                             <p>Adalah perusahaan yang bergerak di bidang pemasaran dan distribusi produk, khususnya melalui skema <strong>affiliate marketing</strong> dan menawarkan program kesejahteraan bagi mitranya.</p>
                             <p>Dengan peluncuran aplikasi <strong>"GMA Affiliate Mega Pro"</strong> untuk memperluas jangkauan bisnisnya, serta sering mengadakan acara dan promosi untuk mitra dan konsumennya.</p>
                         </div>
-                        <div class="mt-8">
+                        
+                        <!-- TAMBAHAN: Video Company Profile Khusus -->
+                        <div class="video-wrapper mb-8">
+                            <video controls playsinline preload="metadata" class="w-full h-auto object-cover bg-black rounded-xl shadow-md border border-slate-200">
+                                <source src="https://ia601204.us.archive.org/33/items/vid-20260106-wa-0059_20260107_1406/VID-20260106-WA0059.mp4" type="video/mp4">
+                            </video>
+                            <p class="text-sm text-slate-500 mt-3 font-medium flex items-center gap-2">
+                                <i class="fas fa-play-circle text-corporate-accent text-lg"></i> Tonton Video Company Profile GMA
+                            </p>
+                        </div>
+
+                        <div class="mt-2">
                             <a href="https://play.google.com/store/apps/details?id=io.gma.megapro" target="_blank" class="inline-block transition hover:opacity-80">
                                 <!-- OPTIMASI: loading="lazy" -->
                                 <img src="https://bioqu.id/uploads/galleries/2279716/751f5383085daee07e260c5c2a8d5933.png" alt="Google Play" loading="lazy" class="h-14">
@@ -346,12 +357,6 @@
                 <!-- OPTIMASI: Mengubah atribut preload dari "none" menjadi "metadata" -->
                 <!-- Ini memungkinkan browser mengambil thumbnail tanpa membebani download -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 video-wrapper">
-                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
-                        <video controls playsinline preload="metadata" class="w-full h-48 object-cover bg-black rounded-lg">
-                            <source src="https://ia601204.us.archive.org/33/items/vid-20260106-wa-0059_20260107_1406/VID-20260106-WA0059.mp4" type="video/mp4">
-                        </video>
-                        <h4 class="font-semibold text-corporate-dark mt-3 px-2 text-sm">Video Testimoni</h4>
-                    </div>
                     <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-100">
                         <video controls playsinline preload="metadata" class="w-full h-48 object-cover bg-black rounded-lg">
                             <source src="https://ia800909.us.archive.org/27/items/vid-20260106-wa-0037_202601/VID-20260106-WA0037.mp4" type="video/mp4">
@@ -623,7 +628,7 @@
             }
 
             // OPTIMASI UX: Ubah UI tombol agar user tahu ada suara sedang diputar (Bukan mengira web lelet)
-            btnDetail.innerHTML = '<span class="flex items-center gap-2 text-sm md:text-base"><i class="fas fa-volume-up animate-pulse text-xl"></i> Memutar Pesan Suara...<br>(Klik lagi untuk lewati)</span>';
+            btnDetail.innerHTML = '<span class="flex items-center gap-2 text-sm md:text-base"><i class="fas fa-volume-up animate-pulse text-xl"></i> Memutar Pesan... (Klik lagi untuk lewati)</span>';
             btnDetail.classList.replace('bg-corporate-primary', 'bg-corporate-accent');
             
             isPlayingIntro = true;
